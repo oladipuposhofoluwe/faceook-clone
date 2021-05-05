@@ -1,0 +1,165 @@
+html{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+
+}
+
+
+body{
+    background: #242527;
+    color: #fff;
+}
+nav{
+    background: #242527;
+
+}
+
+
+#header_search_query{
+    width: 250px;
+    height: 35px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: #3a3b3d ;
+    margin-left: 59px;
+
+}
+
+
+.facebook{
+    width: 50px;
+    height: 50px;
+    color: white;
+    background: blue;
+    border-radius: 50%;
+    border: blue 2px solid;
+    /* border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -o-border-radius: 50%; */
+}
+
+.yourfeed{
+    display: inline;
+    color: #fff;
+    margin-left: 20px;
+}
+
+.yourfeed1{
+    margin-top: 20px;
+}
+
+.pix{
+    width:40px;
+    height: 40px;
+    border-radius: 50%;
+
+}
+
+
+.pictures {
+    border-radius: 50%;
+    width: 30px;
+    margin-top: 0px;
+    /* margin-bottom: 5px; */
+
+}
+
+
+.scroller {
+    width: 600px;
+    height: 1000px;
+    overflow-y: scroll;
+    /* scrollbar-color: rebeccapurple green; */
+    scrollbar-width: thin;
+}
+
+.majorpix{
+    width: 750px;
+    /* height: 250px; */
+}
+
+.text{
+    margin-top: 10px;
+}
+
+.searchbar{
+    background:#3a3b3d ;
+    width: 250px;
+    height: 40px;
+    border-radius: 15px;
+    border: 2px #3a3b3d solid;
+}
+
+input:focus {
+    outline:  none;
+}
+
+.newpix{
+    width: 200px;
+    height: 80px;
+}
+
+
+
+.like-icon i{
+    font-size: 30px;
+}
+
+/* Like area */
+
+.comment_like_share{
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+.like{
+    flex: 1;
+    margin-right: 70px;
+    display: inline-flex;
+}
+.comment{
+    flex: 1;
+    margin-right:30px;
+    display: inline-flex;
+
+}
+.share{
+    flex: 1;
+    display: inline-flex;
+}
+.like span{
+    margin-left: 12px;
+}
+.comment span{
+    margin-left: 10px;
+}
+.share span{
+    margin-left: 12px;
+}
+.comment a, .like a, .share a{
+    text-decoration: none;
+}
+
+
+
+/* ::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+} */
+

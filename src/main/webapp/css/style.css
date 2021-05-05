@@ -1,0 +1,162 @@
+
+
+.form-bg {
+    height: 85%;
+    width: 85%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.container {
+    margin-top: 10%;
+}
+
+body{
+    background: #e9ebee !important;
+}
+
+h1{
+    font-size: 70px !important;
+    font-weight: bolder;
+    color: #1275d8;
+}
+
+/*.logo{*/
+/*    color: #1275d8 ;*/
+/*}*/
+
+.card_container{
+    text-align: center;
+}
+
+.email_input{
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: #eee 2px solid;
+}
+
+.password_input{
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 15px;
+    border: #eee 2px solid;
+
+}
+
+.logging{
+    width: 100%;
+    padding: 70px;
+    margin-bottom: 15px;
+
+}
+
+.paragraph{
+    text-align: center;
+    font-size: 12px;
+}
+
+.para1{
+    font-size: 30px;
+}
+
+.new_account{
+    color: white;
+    background: rgb(6, 175, 48);
+    padding: 12px 7px;
+    border-radius: 7px;
+    border: none;
+    width: 60%;
+
+}
+
+.inner_card_login{
+    text-align: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* .create-account {
+    margin: 0 auto;
+    margin-left: 30%;
+} */
+
+
+.modal-paragraph{
+    display: block;
+}
+
+.gender_female{
+    border: rgb(201, 198, 198) 2px solid;
+    padding: 9px 18px 9px 5px;
+    border-radius: 3px;
+    /* margin-right: 10px; */
+    /* margin-top: -8px; */
+
+}
+
+.gender_female1{
+    margin-right: 21px;
+}
+
+.gender_male{
+    border: rgb(201, 198, 198) 2px solid;
+    padding: 7px 16px 0.5px 3px;
+    border-radius: 3px;
+    margin-top: 27px;
+}
+
+.gender_male1{
+    margin-right: 30px;
+
+}
+
+
+.gender_male2{
+    padding-right: -5px;
+    margin-top: 0px;
+}
+
+.date{
+    padding: 7px 70px 7px 5px;
+    border-radius: 3px;
+    margin-top: -8px;
+}
+
+.date1{
+    margin-top: 26px;
+}
+
+.button{
+    width: 40%;
+    padding: 30px;
+}
+
+
+.text{
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+}
+
+.gender{
+    margin-top: -18px;
+}
+
+#input{
+    background: #f5f6f7;
+}
+
+.but{
+    align-content: center;
+}
+
+
+
