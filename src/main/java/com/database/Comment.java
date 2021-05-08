@@ -5,6 +5,15 @@ public class Comment {
     private String postImage;
     private String username;
     private String comment;
+    private int userId;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public Comment() {
     }

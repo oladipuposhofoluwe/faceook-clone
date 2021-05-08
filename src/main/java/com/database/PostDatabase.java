@@ -19,8 +19,7 @@ public class PostDatabase {
     public boolean createPost(int userId, Post post){
         boolean result = false;
         try{
-            String query = "insert into posts(title,body,image_name,user_id) " +
-                    "values (?,?,?,?)";
+            String query = "insert into posts(title,body,image_name,user_id) " + "values (?,?,?,?)";
 
             PreparedStatement preparedStatement = this.dbConnection.prepareStatement(query);
             preparedStatement.setString(1, post.getTitle());
@@ -44,18 +43,17 @@ public class PostDatabase {
     public  List<Post> getPosts(){
         List<Post> posts = new ArrayList<>();
         try{
-            String query = "select p.id, p.title, p.body, p.image_name, u.surname from posts p"
+            String query = "select p.id, p.title, p.body, p.image_name, u.lastname from posts p"
                     +"  join user_tb u on p.user_id=u.id order by p.user_id DESC";
             PreparedStatement preparedStatement = this.dbConnection.prepareStatement(query);
             ResultSet result = preparedStatement.executeQuery();
-            System.out.println(result);
             while(result.next()){
                 Post post = new Post();
                 post.setId(result.getInt("id"));
                 post.setTitle(result.getString("title"));
                 post.setBody(result.getString("body"));
                 post.setImageName(result.getString("image_name"));
-                post.setName(result.getString("surname"));
+                post.setName(result.getString("lastname"));
                 posts.add(post);
             }
         }catch (Exception e){
@@ -115,16 +113,13 @@ public class PostDatabase {
         return success;
     }
 
-    public static boolean deletePost(int postId){
+    public static boolean deletePost(int userid, int postId){
         Connection con = DbConnection.getConnection();
         boolean success =  false;
-        System.out.println("I am entering the delete");
         try {
             String query = "delete from posts where id="+postId;
             PreparedStatement prepared = con.prepareStatement(query);
             int result = prepared.executeUpdate();
-            System.out.println("I have a result" +
-                    ""+result);
 
             if(result > 0) {
                 success = true;
@@ -137,10 +132,6 @@ public class PostDatabase {
         return success;
     }
 
-    public static void main(String[] args) {
-//      System.out.println(getComments(7));
-        System.out.print(deletePost(3));
-    }
 
     public boolean createComment(int userId, int postId, String comment){
         boolean result = false;
@@ -152,7 +143,6 @@ public class PostDatabase {
             preparedStatement.setInt(1, postId);
             preparedStatement.setInt(2, userId);
             preparedStatement.setString(3, comment);
-
             preparedStatement.executeUpdate();
             result = true;
         }catch (Exception e){
@@ -162,19 +152,20 @@ public class PostDatabase {
         return result;
     }
 
-    public List<Comment> getComments(int postId){
+    public List<Comment>getComments(int postId){
         List<Comment> comments = new ArrayList();
         try{
             Comment comment = null;
-            String query = "select u.surname, p.title, p.image_name, c.comment from comment c"
-                    +"  join posts p on c.post_id=p.id join user u on u.id=c.user_id" +
+            String query = "select u.lastname, p.title, p.image_name, c.comment from comment c"
+                    +"  join posts p on c.post_id=p.id join user_tb u on u.id=c.user_id" +
                     " where post_id="+postId;
 //            PreparedStatement preparedStatement = this.dbConnection.prepareStatement(query);
             PreparedStatement preparedStatement = this.dbConnection.prepareStatement(query);
             ResultSet resultSet =  preparedStatement.executeQuery();
-            comment = new Comment();
+
             while (resultSet.next()){
-                comment.setUsername(resultSet.getString("surname"));
+                comment = new Comment();
+                comment.setUsername(resultSet.getString("lastname"));
                 comment.setTitle(resultSet.getString("title"));
                 comment.setPostImage(resultSet.getString("image_name"));
                 comment.setComment(resultSet.getString("comment"));
@@ -188,6 +179,51 @@ public class PostDatabase {
             e.printStackTrace();
         }
         return comments;
+    }
+
+
+    public boolean likePost(int userId, int postId, int action){
+        boolean success = false;
+        try{
+            String query = "";
+            PreparedStatement preparedStatement = null;
+            if(action == 1){
+                query = "insert into likes(post_id,user_id) " +
+                        "values (?,?)";
+                preparedStatement = this.dbConnection.prepareStatement(query);
+                preparedStatement.setInt(1, postId);
+                preparedStatement.setInt(2, userId);
+                preparedStatement.executeUpdate();
+                success = true;
+            }else{
+                query = "delete from likes where user_id="+userId+" and post_id="+postId;
+                preparedStatement = this.dbConnection.prepareStatement(query);
+                int result = preparedStatement.executeUpdate();
+                if(result > 0) {
+                    success = true;
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return success;
+    }
+    public boolean editComment(int userId, int postId, String comment){
+        boolean status = false;
+        try {
+            String query = "update comment set comment=? where post_id=? and user_id=?";
+            PreparedStatement prepared = this.dbConnection.prepareStatement(query);
+            prepared.setString(1, comment);
+            prepared.setInt(2, postId);
+            prepared.setInt(3,userId);
+            int result = prepared.executeUpdate();
+            if(result > 0) {
+                status = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return status;
     }
 
 

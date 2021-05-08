@@ -37,7 +37,6 @@ public class Register extends HttpServlet {
             String gender = request.getParameter("gender");
             User userDetails = new User(first_name, lastname, email, password, dob, gender);
             RegisterDao rDao = new RegisterDao(DbConnection.getConnection());
-            System.out.println("All user info "+ userDetails);
             if (rDao.insert(userDetails)) {
                 response.sendRedirect("index.jsp");
             }
